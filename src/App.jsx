@@ -3,7 +3,7 @@ import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, LineChart, L
 import "./App.css";
 
 const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444"];
-const API = "http://127.0.0.1:8000";
+const API = "https://demo-dashboard-ypty.onrender.com";
 
 const StatCard = ({ title, value, subtitle }) => (
   <div className="stat-card">
