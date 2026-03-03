@@ -135,7 +135,7 @@ You are a pandas code generator. The user has a dataframe called `df` with these
 - role (str): one of Backend Engineer, Frontend Engineer, Full Stack Engineer, DevOps Engineer, Platform Engineer
 - DemosGenerated (int): 0-500
 - daysInactive (int): 0-90
-- userType (str): Power User, Active User, Casual User, Inactive User
+- userType (str): exactly one of "Power User", "Active User", "Casual User", "Inactive User"
 
 Write a single Python pandas expression to answer this question: "{req.question}"
 
@@ -145,8 +145,10 @@ Rules:
 - Must be a single expression that returns a value
 - Use only these safe operations: groupby, filter, sort_values, head, value_counts, mean, sum, count, unique, nunique, describe
 - Store result in a variable called `result`
+- For userType always use exact strings: "Power User", "Active User", "Casual User", "Inactive User"
+- For company always use exact strings: "Google", "Microsoft", "Amazon", "Stripe", "Shopify", "Netflix", "Uber", "Airbnb", "Salesforce", "Oracle"
 
-Example: result = df['company'].unique()
+Example: result = df[df['userType'] == 'Power User'][['company', 'role', 'DemosGenerated', 'daysInactive']].head(10)
 """
 
     code_response = client.chat.completions.create(
